@@ -55,7 +55,6 @@
     list-style: none;
     padding: 0;
     margin: 20px 0;
-    counter-reset: list-counter; 
   }
 
   .person {
@@ -63,18 +62,21 @@
     border-bottom: 1px solid #eee;
     font-size: 18px;
     color: #007bff;
-    counter-increment: list-counter; 
   }
 
-  .person::before {
-    content: counter(list-counter) ". "; 
+  footer {
+    font-size: small;
+    background-color: #FDFFC2;
+    color: #007bff;
+    text-align: center;
+    padding: 15px;
   }
 
 </style>
 <body>
   <div class="navbar">
     <a href="index.html">Home</a>
-    <a  class="active" href="members.html">Members</a>
+    <a class="active" href="members.html">Members</a>
   </div>
 
   <div class="container">
@@ -106,22 +108,8 @@
     </ol>
   </div>
 
-  <script>
-    var peopleList = document.getElementById("people-list");
-
-    var people = peopleList.children;
-
-    var peopleArray = Array.from(people);
-
-    peopleArray.sort(function(a, b) {
-      return a.textContent.localeCompare(b.textContent);
-    });
-
-    peopleList.innerHTML = "";
-
-    peopleArray.forEach(function(person) {
-      peopleList.appendChild(person);
-    });
-  </script>
+  <footer>
+    ©2024 All Rights Reserved | Developed By Jagannath Prasad Kar
+  </footer>
 </body>
 </html>
