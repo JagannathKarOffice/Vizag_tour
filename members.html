@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members List</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FDFFC2;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background-color: #0C0C0C;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar a {
+    display: block;
+    color: #FDFFC2;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+
+  .navbar a:hover {
+    background-color: #088cc0;
+  }
+
+  .active {
+    background-color: #007bff;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    color: #007bff;
+  }
+
+  .people-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    counter-reset: list-counter; 
+  }
+
+  .person {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    font-size: 18px;
+    color: #007bff;
+    counter-increment: list-counter; 
+  }
+
+  .person::before {
+    content: counter(list-counter) ". "; 
+  }
+
+</style>
+<body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a  class="active" href="members.html">Members</a>
+  </div>
+
+  <div class="container">
+    <h1>Members List</h1>
+    <ol class="people-list" id="people-list">
+      <li class="person">Sushanta Kumar Mohapatra</li>
+      <li class="person">Janmejaya Giri</li>
+      <li class="person">Jagannath Prasad Kar</li>
+      <li class="person">Sabita Kumari Swain</li>
+      <li class="person">Gayatri Gochhayat</li>
+      <li class="person">Chetan Pradhan</li>
+      <li class="person">Sasmita</li>
+      <li class="person">Subham Behera</li>
+      <li class="person">Sradha Suman Behera</li>
+      <li class="person">Deenabandhu Dakua</li>
+      <li class="person">Shakti Darshan Behera</li>
+      <li class="person">Soumitra</li>
+      <li class="person">Santosh Nayak</li>
+      <li class="person">Chinamayee Majhi</li>
+      <li class="person">Sitesh Moharana</li>
+      <li class="person">Sailesh Dakua</li>
+      <li class="person">Sreedhar Panigrahi</li>
+      <li class="person">Puja Verma</li>
+      <li class="person">Rakesh Dash</li>
+      <li class="person">Saumya Mohapatra</li>
+      <li class="person">Miki Pradhan</li>
+      <li class="person">Soudamini</li>
+      <li class="person">Sanjay Rout</li>
+    </ol>
+  </div>
+
+  <script>
+    var peopleList = document.getElementById("people-list");
+
+    var people = peopleList.children;
+
+    var peopleArray = Array.from(people);
+
+    peopleArray.sort(function(a, b) {
+      return a.textContent.localeCompare(b.textContent);
+    });
+
+    peopleList.innerHTML = "";
+
+    peopleArray.forEach(function(person) {
+      peopleList.appendChild(person);
+    });
+  </script>
+</body>
+</html>
