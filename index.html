@@ -78,7 +78,43 @@
       width: 100%;
     }
 
-    
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+      padding-top: 50px;
+    }
+
+    .modal-content {
+      background-color: #FDFFC2;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
     @media only screen and (max-width: 600px) {
       .countdown-item span {
         font-size: 24px;
@@ -97,25 +133,46 @@
   </div>
 
   <div class="countdown-container">
-    <h1>Visakhapatnam TOUR IT, Countdown to May 10, 11:00 PM</h1>
+    <!-- Countdown timer modal trigger button -->
+  
 
-    <div class="countdown" id="countdown">
-      <div class="countdown-item">
-        <span id="days">00</span>
-        <span>Days</span>
+    <!-- Countdown timer modal -->
+    <div id="timerModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="countdown-container">
+          <h4>VIZAG TOUR IT, Countdown to May 10, 11:00 PM</h4>
+          <div class="countdown" id="countdown">
+            <div class="countdown-item">
+              <span id="days">00</span>
+              <span>Days</span>
+            </div>
+            <div class="countdown-item">
+              <span id="hours">00</span>
+              <span>Hours</span>
+            </div>
+            <div class="countdown-item">
+              <span id="minutes">00</span>
+              <span>Minutes</span>
+            </div>
+            <div class="countdown-item">
+              <span id="seconds">00</span>
+              <span>Seconds</span>
+            </div>
+          </div>
+          <img src="siepl1.png" alt="sieplIMG" id="siepl"/>
+        </div>
       </div>
-      <div class="countdown-item">
-        <span id="hours">00</span>
-        <span>Hours</span>
-      </div>
-      <div class="countdown-item">
-        <span id="minutes">00</span>
-        <span>Minutes</span>
-      </div>
-      <div class="countdown-item">
-        <span id="seconds">00</span>
-        <span>Seconds</span>
-      </div>
+    </div>
+
+    <!-- Your existing countdown timer without modal -->
+    <div class="countdown-container">
+      <h1>STOP OPENING THE TIMER AGAIN & AGAIN and GO DO YOUR WORK! &#128548;</h1>
+      <h4>Still if you want to check how much time is left, Click The Button</h4>
+      <button id="openModal" style="background-color: #007bff; color: #FFFFFF; padding: 10px 20px; font-size: 18px; border-radius: 10px; border: none; cursor: pointer;">Open Timer</button>
+
+      
     </div>
     <img src="siepl1.png" alt="sieplIMG" id="siepl"/>
   </div>
@@ -125,27 +182,19 @@
   </footer>
 
   <script>
-    
     var countDownDate = new Date("May 10, 2024 23:00:00").getTime();
 
-   
     var x = setInterval(function() {
-
-    
       var now = new Date().getTime();
-
       var distance = countDownDate - now;
-
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
       document.getElementById("days").innerHTML = formatTime(days);
       document.getElementById("hours").innerHTML = formatTime(hours);
       document.getElementById("minutes").innerHTML = formatTime(minutes);
       document.getElementById("seconds").innerHTML = formatTime(seconds);
-
       if (distance < 0) {
         clearInterval(x);
         document.getElementById("countdown").innerHTML = "EXPIRED";
@@ -154,6 +203,32 @@
 
     function formatTime(time) {
       return time < 10 ? "0" + time : time;
+    }
+
+    // Get the modal element
+    var modal = document.getElementById('timerModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("openModal");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
     }
   </script>
 </body>
